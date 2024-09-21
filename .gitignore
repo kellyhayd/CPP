@@ -400,3 +400,5 @@ ex00/tempCodeRunnerFile.cpp
 ex01/phonebook
 .vscode/settings.json
 .vscode/tasks.json
+ex01/src/main.o
+ex01/src/PhoneBook.o

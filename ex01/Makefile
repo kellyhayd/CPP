@@ -1,9 +1,13 @@
 NAME	= phonebook
 
-CXX			= c++
-CXXFLAGS	= -Wall -Werror -Wextra
-SRC			= phonebook.cpp
-OBJ			= $(SRC:%.cpp=%.o)
+CXX			:= c++
+CXXFLAGS	:= -Wall -Werror -Wextra
+SRCDIR		:= src/
+SRC			:= $(addprefix $(SRCDIR), \
+				PhoneBook.cpp \
+				main.cpp)
+OBJ			:= $(SRC:%.cpp=%.o)
+INCLUDE		:= -Iinclude/
 RM			= rm -f
 
 all: $(NAME)
@@ -12,7 +16,7 @@ $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)

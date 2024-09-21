@@ -397,3 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 ex00/tempCodeRunnerFile.cpp
+ex01/phonebook
+.vscode/settings.json
+.vscode/tasks.json

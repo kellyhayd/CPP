@@ -70,11 +70,11 @@ int	main(){
 	PhoneBook	book;
 	int			exit_code;
 
-	std::cout << "☎️  Welcome to your PhoneBook!\n\n";
+	std::cout << "\n☎️  Welcome to your PhoneBook!\n\n";
 	do{
 		std::cout << "-----------------------------------\n";
 		std::cout << "*** What do you like to do now? ***\n";
-		std::cout << "___________________________________\n";
+		std::cout << "-----------------------------------\n";
 		std::cout << "1. ADD\n2. SEARCH\n3. EXIT\n\n";
 		std::cin >> action;
 		if (action.compare("1") == 0 || to_lower(action).compare("add") == 0){

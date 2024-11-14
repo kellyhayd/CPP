@@ -1,7 +1,7 @@
 NAME	= phonebook
 
 CXX			:= c++
-CXXFLAGS	:= -Wall -Werror -Wextra
+CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 SRCDIR		:= src/
 SRC			:= $(addprefix $(SRCDIR), \
 				PhoneBook.cpp \

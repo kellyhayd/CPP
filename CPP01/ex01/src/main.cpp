@@ -1,11 +1,12 @@
 #include "Zombie.hpp"
 
 int	main(){
-	Zombie*	zombie1 = newZombie("Rick");
-	zombie1->announce();
-	delete zombie1;
+	Zombie *horde;
 
-	randomChump("Morty");
-
+	horde = zombieHorde(5, "Daryl");
+	for (int i = 0; i < 5; ++i) {
+		horde[i].announce();
+	}
+	delete[] horde;
 	return (0);
 }

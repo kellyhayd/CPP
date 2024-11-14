@@ -4,28 +4,23 @@
 #include <string>
 
 class Contact{
-public:
+private:
 	std::string	name;
 	std::string	last_name;
 	std::string	nickname;
 	std::string	darkest_secret;
 	std::string	phone;
 
-	~Contact() { }
-	Contact() : name(), last_name(), nickname(), darkest_secret(), phone() { }
+public:
+	Contact();
+	~Contact();
 	Contact(std::string name, std::string last_name, std::string nickname,
-		std::string darkest_secret, std::string phone){
-		this->name = name;
-		this->last_name = last_name;
-		this->nickname = nickname;
-		this->darkest_secret = darkest_secret;
-		this->phone = phone;
-	}
-	// void setName(const std::string &name);
-	// void setLast_name(const std::string &last_ame);
-	// void setNickname(const std::string &nickname);
-	// void setDarkest_secret(const std::string &darkest_secret);
-	// void setPhone(const std::string &phone);
+		std::string darkest_secret, std::string phone);
+	std::string getName();
+	std::string getLast_name();
+	std::string getNickname();
+	std::string getDarkest_secret();
+	std::string getPhone();
 };
 
 #endif

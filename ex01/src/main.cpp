@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 #include <iostream>
 
 std::string	phone_define(const std::string msg){

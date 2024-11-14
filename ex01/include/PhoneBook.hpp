@@ -10,7 +10,8 @@ private:
 public:
 	Contact	contacts[8];
 
-	PhoneBook() :  index(0), contacts() { }
+	PhoneBook();
+	~PhoneBook();
 
 	int		exit();
 	void	add(Contact new_contact);

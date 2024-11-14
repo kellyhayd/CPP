@@ -5,6 +5,7 @@ CXXFLAGS	:= -Wall -Werror -Wextra
 SRCDIR		:= src/
 SRC			:= $(addprefix $(SRCDIR), \
 				PhoneBook.cpp \
+				Contact.cpp \
 				main.cpp)
 OBJ			:= $(SRC:%.cpp=%.o)
 INCLUDE		:= -Iinclude/
@@ -23,3 +24,5 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+
+re: fclean all

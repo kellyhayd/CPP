@@ -3,6 +3,13 @@
 #include <iomanip>
 #include <string>
 
+PhoneBook::PhoneBook(){
+	index = 0;
+}
+
+PhoneBook::~PhoneBook(){
+}
+
 int	PhoneBook::exit(){
 	return -1;
 }
@@ -15,12 +22,12 @@ void	PhoneBook::add(Contact new_contact){
 int	PhoneBook::display(std::string index){
 	int	idx = std::atoi(index.c_str()) - 1;
 
-	if (!contacts[idx].name.empty()){
-		std::cout << contacts[idx].name << '\n';
-		std::cout << contacts[idx].last_name << '\n';
-		std::cout << contacts[idx].nickname << '\n';
-		std::cout << contacts[idx].darkest_secret << '\n';
-		std::cout << contacts[idx].phone << std::endl;
+	if (!contacts[idx].getName().empty()){
+		std::cout << contacts[idx].getName() << '\n';
+		std::cout << contacts[idx].getLast_name() << '\n';
+		std::cout << contacts[idx].getNickname() << '\n';
+		std::cout << contacts[idx].getDarkest_secret() << '\n';
+		std::cout << contacts[idx].getPhone() << std::endl;
 		return (1);
 	}
 	else
@@ -29,21 +36,21 @@ int	PhoneBook::display(std::string index){
 }
 
 void	PhoneBook::search(){
-	if (contacts[0].name.empty()){
+	if (contacts[0].getName().empty()){
 		std::cout << ">> Sorry, your phonebook is empty :( <<\n\n";
 		return ;
 	}
 	std::cout << "PhoneBook contacts:\n\n";
 	std::cout << std::setw(10) << "Index" << "|" << std::setw(10) << "First Name" << "|"
 			<< std::setw(10) << "Last Name" << "|" << std::setw(10) << "Nickname" << std::endl;
-	for(size_t i = 0; i < 8 && !contacts[i].name.empty(); i++){
+	for(size_t i = 0; i < 8 && !contacts[i].getName().empty(); i++){
 		std::cout << std::setw(10) << (i +1) << "|";
-		std::cout << std::setw(10) << (contacts[i].name.length() > 10 ?
-			contacts[i].name.substr(0, 9) + "." : contacts[i].name) << "|";
-		std::cout << std::setw(10) << (contacts[i].last_name.length() > 10 ?
-			contacts[i].last_name.substr(0, 9) + "." : contacts[i].last_name) << "|";
-		std::cout << std::setw(10) << (contacts[i].nickname.length() > 10 ?
-			contacts[i].nickname.substr(0, 9) + "." : contacts[i].nickname) << std::endl;
+		std::cout << std::setw(10) << (contacts[i].getName().length() > 10 ?
+			contacts[i].getName().substr(0, 9) + "." : contacts[i].getName()) << "|";
+		std::cout << std::setw(10) << (contacts[i].getLast_name().length() > 10 ?
+			contacts[i].getLast_name().substr(0, 9) + "." : contacts[i].getLast_name()) << "|";
+		std::cout << std::setw(10) << (contacts[i].getNickname().length() > 10 ?
+			contacts[i].getNickname().substr(0, 9) + "." : contacts[i].getNickname()) << std::endl;
 	}
 	std::string	index;
 	int	result;

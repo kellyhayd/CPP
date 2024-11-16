@@ -402,3 +402,5 @@ ex01/phonebook
 .vscode/tasks.json
 ex01/src/main.o
 ex01/src/PhoneBook.o
+CPP01/ex03/src/HumanA.o
+*.o

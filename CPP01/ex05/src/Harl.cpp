@@ -29,7 +29,7 @@ void Harl::complain(std::string level){
 	void (Harl::*function[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	for(int i = 0; i < 4; i++){
-		if (level == levels[i]){
+		if (!level.compare(levels[i])){
 			(this->*function[i])();
 			return;
 		}

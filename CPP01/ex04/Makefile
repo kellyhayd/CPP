@@ -4,14 +4,14 @@ CXX			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 SRC			:= main.cpp
-OBJ			:= $(SRC: %.cpp=%.o)
+OBJ			:= $(SRC:%.cpp=%.o)
 
 rm			= rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(NAME) 
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

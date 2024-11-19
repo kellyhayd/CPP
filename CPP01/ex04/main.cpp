@@ -32,6 +32,7 @@ bool	read_and_replace(char **argv){
 		std::cout << "Error: Cannot read file" << std::endl;
 		return (0);
 	}
+	return (1);
 }
 
 int	main(int argc, char **argv){

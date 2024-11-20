@@ -34,20 +34,20 @@ void Harl::complain(std::string level){
 	size_t i = 0;
 	while(i < 4){
 		if (!level.compare(levels[i])){
-			this;
+			break;
 		}
 		i++;
 	}
 
 	switch(i){
 		case 0:
-		debug();
+			debug();
 		case 1:
-		info();
+			info();
 		case 2:
-		warning();
+			warning();
 		case 3:
-		error();
+			error();
 		default:
 			std::cout << "No Valid Level\n";
 			break;

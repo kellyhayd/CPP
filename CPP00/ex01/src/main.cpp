@@ -1,21 +1,29 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <iostream>
+#include <cstdio>
+
 
 std::string	phone_define(const std::string msg){
 	std::string	number;
+	int	ok = 1;
 
 	do{
 		std::cout << msg << '\n';
 		std::getline(std::cin >> std::ws, number);
+		std::clearerr(stdin);
+		std::cin.clear();
 		for(std::string::const_iterator it = number.begin(); it != number.end(); ++it)
 		{
 			if (!std::isdigit(*it)){
 				std::cout << ">> Invalid phone number. Digits only <<\n";
+				number.clear();
+				ok = 0;
 				break;
 			}
+			ok = 1;
 		}
-		if (number.size() < 8 || number.size() > 11 || number.empty()){
+		if (ok == 1 && (number.size() < 8 || number.size() > 11 || number.empty())){
 			std::cout << ">> Phone number must have 8-11 numbers <<\n";
 			number.clear();
 		}
@@ -28,6 +36,8 @@ std::string	str_define(const std::string msg){
 
 	do{
 		std::cout << msg << '\n';
+		std::clearerr(stdin);
+		std::cin.clear();
 		std::getline(std::cin >> std::ws, input);
 		if (input.size() < 2 || input.empty()){
 			std::cout << ">> Field must be longer than one character <<\n";
@@ -67,9 +77,9 @@ std::string	to_lower(const std::string &str){
 
 int	main(){
 	std::string	action;
-	Contact		contacts[8];
 	PhoneBook	book;
-	int			exit_code;
+	int			exit_code = 0;
+
 
 	std::cout << "\n☎️  Welcome to your PhoneBook!\n\n";
 	do{
@@ -77,6 +87,8 @@ int	main(){
 		std::cout << "*** What do you like to do now? ***\n";
 		std::cout << "-----------------------------------\n";
 		std::cout << "1. ADD\n2. SEARCH\n3. EXIT\n\n";
+		std::clearerr(stdin);
+		std::cin.clear();
 		std::cin >> action;
 		if (action.compare("1") == 0 || to_lower(action).compare("add") == 0){
 			contact_define(&book);

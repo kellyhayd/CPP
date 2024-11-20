@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cstdio>
 
 PhoneBook::PhoneBook(){
 	index = 0;
@@ -19,9 +20,14 @@ void	PhoneBook::add(Contact new_contact){
 	index++;
 }
 
-int	PhoneBook::display(std::string index){
-	int	idx = std::atoi(index.c_str()) - 1;
+int	PhoneBook::display(int index){
+	int	idx = index - 1;
 
+	if (idx < 0)
+	{
+		std::cout << ">> Invalid index. Try again <<" << std::endl;
+		return (0);
+	}
 	if (!contacts[idx].getName().empty()){
 		std::cout << contacts[idx].getName() << '\n';
 		std::cout << contacts[idx].getLast_name() << '\n';
@@ -52,11 +58,15 @@ void	PhoneBook::search(){
 		std::cout << std::setw(10) << (contacts[i].getNickname().length() > 10 ?
 			contacts[i].getNickname().substr(0, 9) + "." : contacts[i].getNickname()) << std::endl;
 	}
-	std::string	index;
-	int	result;
+	int	index = 0;
+	int	result = 0;
 	do {
 		std::cout << "-> Choose the index to display\n";
+		std::clearerr(stdin);
+		std::cin.clear();
 		std::cin >> index;
+		if (std::cin.fail())
+			continue;
 		result = display(index);
 	} while(result == 0);
 }

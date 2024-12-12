@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.o
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -409,8 +410,5 @@ CPP01/ex03/src/HumanA.o
 CPP01/ex03/src/HumanB.o
 CPP01/ex03/src/main.o
 CPP01/ex03/src/Weapon.o
-CPP01/ex03/Attack
-CPP01/ex03/Attack
-CPP01/ex03/src/HumanA.o
-CPP01/ex03/src/HumanB.o
-CPP01/ex03/src/main.o
+CPP01/ex06/harlFilter
+.gitignore

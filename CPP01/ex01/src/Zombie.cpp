@@ -8,7 +8,7 @@ Zombie::Zombie(std::string name){
 }
 
 Zombie::~Zombie(){
-	std::cout << "Zombie " << name << " ressurected" << std::endl;
+	std::cout << "Zombie " << name << " is really dead now" << std::endl;
 }
 
 std::string Zombie::getName(){

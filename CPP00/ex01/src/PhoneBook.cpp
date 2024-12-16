@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 #include <cstdio>
+#include <limits>
 
 PhoneBook::PhoneBook(){
 	index = 0;
@@ -23,7 +24,7 @@ void	PhoneBook::add(Contact new_contact){
 int	PhoneBook::display(int index){
 	int	idx = index - 1;
 
-	if (idx < 0)
+	if (idx < 0 || idx >= 8)
 	{
 		std::cout << ">> Invalid index. Try again <<" << std::endl;
 		return (0);
@@ -65,8 +66,11 @@ void	PhoneBook::search(){
 		std::clearerr(stdin);
 		std::cin.clear();
 		std::cin >> index;
-		if (std::cin.fail())
+		if (std::cin.fail()){
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
+		}
 		result = display(index);
 	} while(result == 0);
 }

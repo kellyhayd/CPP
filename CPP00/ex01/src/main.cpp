@@ -28,6 +28,7 @@ std::string	phone_define(const std::string msg){
 			number.clear();
 		}
 	} while (number.empty());
+	std::cin.clear();
 	return (number);
 }
 
@@ -49,19 +50,14 @@ std::string	str_define(const std::string msg){
 
 void	contact_define(PhoneBook *book){
 	Contact		new_contact;
-	std::string	name;
-	std::string	last_name;
-	std::string	nick;
-	std::string	secret;
-	std::string	phone;
+	std::string	name, last_name, nick, secret, phone;
 
 	std::cout << "\nPlease complete the following informations:\n\n";
-	name = str_define("First name: ");
-	last_name = str_define("Last name: ");
-	nick = str_define("Nickname: ");
-	secret = str_define("Darkest secret: ");
-	phone = phone_define("Phone number: ");
-	new_contact = Contact(name, last_name, nick, secret, phone);
+	new_contact.setName(str_define("First name: "));
+	new_contact.setLast_name(str_define("Last name: "));
+	new_contact.setNickname(str_define("Nickname: "));
+	new_contact.setDarkest_secret(str_define("Darkest secret: "));
+	new_contact.setPhone(phone_define("Phone number: "));
 	book->add(new_contact);
 	std::cout << "\n***Contact successfully created!***\n\n";
 }

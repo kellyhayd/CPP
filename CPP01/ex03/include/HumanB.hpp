@@ -15,8 +15,8 @@ public:
 	HumanB(std::string name);
 	~HumanB();
 
-	const std::string	&getName();
-	void	setName(std::string &name);
+	// const std::string	&getName();
+	// void	setName(std::string &name);
 	void	setWeapon(Weapon &weapon);
 
 	void	attack() const;

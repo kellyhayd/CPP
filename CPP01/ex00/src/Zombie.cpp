@@ -2,11 +2,11 @@
 
 Zombie::Zombie(std::string name){
 	this->name = name;
-	std::cout << "Zombie " << name << " is born" << std::endl;
+	std::cout << BOLD << GREEN << name << "rose from the tomb" << RESET << std::endl;
 }
 
 Zombie::~Zombie(){
-	std::cout << "Zombie " << name << " ressurected" << std::endl;
+	std::cout << BOLD << RED << name << " returned to the tomb!" << RESET << std::endl;
 }
 
 std::string Zombie::getName(){
@@ -14,5 +14,5 @@ std::string Zombie::getName(){
 }
 
 void	Zombie::announce(){
-	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << "\n";
+	std::cout << BOLD << YELLOW << getName() << ": BraiiiiiiinnnzzzZ..." << RESET << std::endl;
 }

@@ -12,14 +12,14 @@ void Harl::debug(void){
 
 void Harl::info(void){
 	std::cout << "[INFO]\n"
-	<< "I cannot believe adding extra bacon costs more money. You didn’t "
-			"put enough bacon in my burger! If you did, I wouldn’t be asking for more!"\
+	<< "I cannot believe adding extra tofu costs more money. You didn’t "
+			"put enough tofu in my burger! If you did, I wouldn’t be asking for more!"\
 			 << std::endl;
 }
 
 void Harl::warning(void){
 	std::cout << "[WARNING]\n"
-	<< "I think I deserve to have some extra bacon for free. I’ve been "
+	<< "I think I deserve to have some extra tofu for free. I’ve been "
 			"coming for years whereas you started working here since last month." << std::endl;
 }
 
@@ -42,14 +42,18 @@ void Harl::complain(std::string level){
 	switch(i){
 		case 0:
 			debug();
+			//Fall through
 		case 1:
 			info();
+			//Fall through
 		case 2:
 			warning();
+			//Fall through
 		case 3:
 			error();
+			break;
 		default:
-			std::cout << "No Valid Level\n";
+			std::cout << "[ Probably complaining about insignificant problems ]\n";
 			break;
 	}
 }

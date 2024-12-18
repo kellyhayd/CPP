@@ -15,11 +15,6 @@ public:
 	HumanA(std::string name, Weapon& weapon);
 	~HumanA();
 
-	// const std::string&	getName();
-	// const std::string&	getWeapon();
-	// void	setName(const std::string& name);
-	// void	setWeapon(Weapon weapon);
-
 	void	attack();
 };
 

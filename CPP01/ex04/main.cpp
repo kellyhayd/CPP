@@ -14,9 +14,9 @@ bool	read_and_replace(char **argv){
 	}
 
 	std::ifstream ini_file(filename.c_str());
-	std::ofstream out_file((filename + ".replace").c_str());
 
-	if (ini_file && out_file){
+	if (ini_file){
+		std::ofstream out_file((filename + ".replace").c_str());
 		while(getline(ini_file, line)){
 			size_t	pos = 0;
 			while ((pos = line.find(to_replace, pos)) != std::string::npos){

@@ -27,11 +27,3 @@ public:
 std::ostream& operator<<(std::ostream& out, Fixed const &value);
 
 #endif
-
-
-/*
-
-And add the following function to the Fixed class files:
-	• An overload of the insertion («) operator that inserts a floating-point representation
-	of the fixed-point number into the output stream object passed as parameter.
-*/

@@ -50,7 +50,6 @@ std::string	str_define(const std::string msg){
 
 void	contact_define(PhoneBook *book){
 	Contact		new_contact;
-	std::string	name, last_name, nick, secret, phone;
 
 	std::cout << "\nPlease complete the following informations:\n\n";
 	new_contact.setName(str_define("First name: "));
@@ -75,7 +74,6 @@ int	main(){
 	std::string	action;
 	PhoneBook	book;
 	int			exit_code = 0;
-
 
 	std::cout << "\n☎️  Welcome to your PhoneBook!\n\n";
 	do{

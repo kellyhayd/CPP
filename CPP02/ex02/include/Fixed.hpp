@@ -20,18 +20,33 @@ public:
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
+
 	float	toFloat(void) const;
 	int		toInt(void) const;
+
+	bool	operator>(const Fixed &raw) const;
+	bool	operator<(const Fixed &raw) const;
+	bool	operator>=(const Fixed &raw) const;
+	bool	operator<=(const Fixed &raw) const;
+	bool	operator==(const Fixed &raw) const;
+	bool	operator!=(const Fixed &raw) const;
+
+	Fixed	operator+(const Fixed &raw) const;
+	Fixed	operator-(const Fixed &raw) const;
+	Fixed	operator*(const Fixed &raw) const;
+	Fixed	operator/(const Fixed &raw) const;
+
+	Fixed&	operator++(void);
+	Fixed	operator++(int);
+	Fixed&	operator--(void);
+	Fixed	operator--(int);
+
+	static Fixed&		min(Fixed& raw1, Fixed& raw2);
+	static const Fixed&	min(const Fixed& raw1, const Fixed& raw2);
+	static Fixed&		max(Fixed& raw1, Fixed& raw2);
+	static const Fixed&	max(const Fixed& raw1, const Fixed& raw2);
 };
 
 std::ostream& operator<<(std::ostream& out, Fixed const &value);
 
 #endif
-
-
-/*
-
-And add the following function to the Fixed class files:
-	• An overload of the insertion («) operator that inserts a floating-point representation
-	of the fixed-point number into the output stream object passed as parameter.
-*/

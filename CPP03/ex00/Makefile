@@ -7,13 +7,15 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 INCLUDE := -Iinclude/
 SRCDIR := src/
-SRC := $(wildcard $(SRCDIR)*.cpp)
+SRC := $(addprefix $(SRCDIR), \
+		main.cpp \
+		ClapTrap.cpp)
 OBJ := $(SRC:%.cpp=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(OBJ) $(NAME)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@

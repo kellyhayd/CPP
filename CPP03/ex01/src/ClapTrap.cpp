@@ -33,7 +33,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 };
 
 ClapTrap::~ClapTrap() {
-	std::cout << BOLD << RED << "ClapTrap was destroyed :(" << RESET << std::endl;
+	std::cout << BOLD << RED << "ClapTrap " << YELLOW << this->name \
+		<< RED << " was destroyed 💀" << RESET << std::endl;
 };
 
 
@@ -42,16 +43,6 @@ ClapTrap::~ClapTrap() {
 std::string	ClapTrap::getName() {return (this->name);};
 
 int		ClapTrap::getAttackDamage() {return (this->attackDamage);};
-
-// int		ClapTrap::getHitPoints() { return (this->hitPoints);};
-
-// void	ClapTrap::setName(const std::string name) {this->name = name;};
-
-// void	ClapTrap::setHitPoints(int amount) {this->hitPoints = amount;};
-
-// void	ClapTrap::setEnergyPoints(int amount) {this->energyPoints = amount;};
-
-// void	ClapTrap::setAttackDamage(int amount) {this->attackDamage = amount;};
 
 // Action Functions
 
@@ -84,8 +75,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	}
 	this->energyPoints -= amount;
 	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " took " \
-		<< RED << amount << CYAN << " points of damage. Now it has " \
-		<< GREEN << this->energyPoints << CYAN << " points of energy" << RESET << std::endl;
+		<< RED << amount << CYAN << " points of damage." << RESET << std::endl;
 };
 
 void	ClapTrap::beRepaired(unsigned int amount) {
@@ -96,6 +86,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	this->energyPoints--;
 	this->hitPoints += amount;
-	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " repaired itself"
-	" and now has " << GREEN << this->hitPoints << CYAN << " hit points!" << RESET << std::endl;
+	std::cout << BOLD << CYAN << "ClapTrap " << BLUE << this->name << CYAN \
+		<< " repaired itself in " << BLUE << amount << CYAN << " points" << RESET << std::endl;
 };

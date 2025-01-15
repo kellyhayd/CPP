@@ -14,6 +14,7 @@ public:
 	const std::string	getName();
 
 	void	guardGate();
+	void	attack(const std::string& target);
 };
 
 

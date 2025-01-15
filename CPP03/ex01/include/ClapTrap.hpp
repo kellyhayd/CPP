@@ -29,12 +29,7 @@ public:
 	~ClapTrap();
 
 	std::string	getName();
-	// int			getHitPoints();
 	int			getAttackDamage();
-	// void		setName(std::string name);
-	// void		setHitPoints(int amount);
-	// void		setEnergyPoints(int amount);
-	// void		setAttackDamage(int amount);
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);

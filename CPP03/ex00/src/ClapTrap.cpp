@@ -69,8 +69,8 @@ void	ClapTrap::attack(const std::string& target) {
 	}
 	this->energyPoints--;
 	this->hitPoints--;
-	std::cout << BOLD << CYAN << "Claptrap " << this->name \
-			<< " attacks " << target << " causing " << GREEN \
+	std::cout << BOLD << CYAN << "Claptrap " << BLUE << this->name \
+			<< CYAN << " attacks " << target << " causing " << RED \
 			<< getAttackDamage() << CYAN << " points damage!" << RESET << std::endl;
 };
 
@@ -87,8 +87,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	}
 	this->energyPoints -= amount;
 	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " took " \
-		<< RED << amount << CYAN << " points of damage. Now it has " \
-		<< GREEN << this->energyPoints << CYAN << " points of energy" << RESET << std::endl;
+		<< RED << amount << CYAN << " points of damage" << RESET << std::endl;
 };
 
 void	ClapTrap::beRepaired(unsigned int amount) {
@@ -99,6 +98,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	this->energyPoints--;
 	this->hitPoints += amount;
-	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " repaired itself"
-	" and now has " << GREEN << this->hitPoints << CYAN << " hit points!" << RESET << std::endl;
+	std::cout << BOLD << CYAN << "ClapTrap " << BLUE << this->name << CYAN \
+		<< " repaired itself in " << BLUE << amount << CYAN << " points" << RESET << std::endl;
 };

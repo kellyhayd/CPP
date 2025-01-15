@@ -1,52 +1,27 @@
-#include "ClapTrap.hpp"
+#include "../include/ClapTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap();
-	ClapTrap("Kelly");
+	ClapTrap blip("Jorge");
 
-	// std::cout << INVERSE << BOLD << "Creating a no name ClapTrap and Jorge" << RESET << std::endl;
-	// ClapTrap clapTrap;
-	// ClapTrap clapTrap2("jorge");
+	std::cout << std::endl;
+	std::cout << INVERSE << "Health Points tests" << RESET << std::endl;
 
-	// std::cout << INVERSE << BOLD << "Attacking Jorge" << RESET << std::endl;
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// std::cout << INVERSE << BOLD << "Repairing Jorge" << RESET << std::endl;
-	// clapTrap2.beRepaired(5);
-	// std::cout << INVERSE << BOLD << "Attacking no name" << RESET << std::endl;
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
-	// std::cout << INVERSE << BOLD << "Repairing no name" << RESET << std::endl;
-	// clapTrap.beRepaired(5);
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
-	// clapTrap2.beRepaired(5);
-	// clapTrap.beRepaired(5);
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
-	// clapTrap2.beRepaired(5);
-	// clapTrap.beRepaired(5);
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
-	// clapTrap2.beRepaired(5);
-	// clapTrap.beRepaired(5);
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
-	// clapTrap2.beRepaired(5);
-	// clapTrap.beRepaired(5);
-	// clapTrap.attack(clapTrap2.getName());
-	// clapTrap2.takeDamage(clapTrap.getAttackDamage());
-	// clapTrap2.attack(clapTrap.getName());
-	// clapTrap.takeDamage(clapTrap2.getAttackDamage());
+	blip.takeDamage(1);
+	blip.beRepaired(2);
+	blip.takeDamage(11);
+	blip.takeDamage(1);
+
+	std::cout << std::endl;
+	std::cout << INVERSE << "Energy tests" << RESET << std::endl;
+
+	/* setuping for energy tests */
+	blip.setEnergyPoints(0);
+	blip.setHitPoints(10);
+
+	blip.attack("You");
+	blip.beRepaired(1);
+	blip.attack("A ghost");
 
 	return (0);
 }

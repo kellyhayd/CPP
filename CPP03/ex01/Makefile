@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME := Claptrap
+NAME := ScavTrap
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98

@@ -15,6 +15,8 @@ int main(void) {
 
 		std::cout << INVERSE << "Energy tests" << RESET << std::endl;
 
+		blep.setEnergyPoints(0);
+		blep.setHitPoints(10);
 		blep.attack("You");
 		blep.beRepaired(1);
 		blep.attack("A ghost");
@@ -33,8 +35,8 @@ int main(void) {
 		fighterOne.takeDamage(fighterTwo.getAttackDamage());
 		fighterOne.guardGate();
 		fighterTwo.highFivesGuys();
-		std::cout << "The fight ends cuz one fighter are in defensive mode "
-							<< "and the other guy are trying to make peace with a high five!" << std::endl;
+		std::cout << "The fight ends because one fighter is in defensive mode\n"
+			<< "and the other guy is trying to make peace with a high five!" << std::endl;
 	}
 
   return (0);

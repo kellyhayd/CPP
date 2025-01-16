@@ -13,9 +13,11 @@ int main(void) {
 
 		std::cout << INVERSE << "Energy tests" << RESET << std::endl;
 
-		blop.attack("You");
+		blop.setEnergyPoints(0);
+		blop.setHitPoints(10);
+		blop.attack("you");
 		blop.beRepaired(1);
-		blop.attack("A ghost");
+		blop.attack("a ghost");
 		blop.guardGate();
 	}
 	std::cout << std::endl;
@@ -30,7 +32,7 @@ int main(void) {
 		fighterOne.takeDamage(fighterTwo.getAttackDamage());
 		fighterOne.guardGate();
 		fighterTwo.guardGate();
-		std::cout << BOLD << MAGENTA << "The fight ends cuz both fighters "\
+		std::cout << BOLD << MAGENTA << "The fight ends because both fighters\n"\
 			"are in defensive mode..." << RESET << std::endl;
 	}
 	return (0);

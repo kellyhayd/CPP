@@ -5,10 +5,10 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
-	std::cout << GREEN << BOLD << "ScavTrap without a name was created with:\n" \
-		<< std::setw(10) << YELLOW << hitPoints << RESET << " hit points\n" \
-		<< std::setw(10) << YELLOW << energyPoints << RESET << " energy points\n" \
-		<< std::setw(10) << YELLOW << attackDamage << RESET << " attack damage" <<  std::endl;
+	std::cout << MAGENTA << BOLD << "ScavTrap without a name was created with:\n" \
+		<< std::setw(10) << GREEN << hitPoints << RESET << " hit points\n" \
+		<< std::setw(10) << GREEN << energyPoints << RESET << " energy points\n" \
+		<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
 };
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -16,10 +16,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
-	std::cout << GREEN << BOLD << "ScavTrap " << YELLOW << name << GREEN << " was created with:\n" \
-		<< std::setw(10) << YELLOW << hitPoints << RESET << " hit points\n" \
-		<< std::setw(10) << YELLOW << energyPoints << RESET << " energy points\n" \
-		<< std::setw(10) << YELLOW << attackDamage << RESET << " attack damage" <<  std::endl;
+	std::cout << MAGENTA << BOLD << "ScavTrap " << GREEN << name << MAGENTA << " was created with:\n" \
+		<< std::setw(10) << GREEN << hitPoints << RESET << " hit points\n" \
+		<< std::setw(10) << GREEN << energyPoints << RESET << " energy points\n" \
+		<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
 };
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
@@ -37,11 +37,11 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << BOLD << RED << "ScavTrap " << YELLOW << name << RED << " was destroyed 💀" << std::endl;
+	std::cout << BOLD << RED << "ScavTrap " << name << " was destroyed 💀" << std::endl;
 };
 
 void	ScavTrap::guardGate() {
-	std::cout << BOLD << GREEN << "ScavTrap " << YELLOW << name << GREEN << " has entered in Gate keeper mode" << std::endl;
+	std::cout << BOLD << GREEN << "ScavTrap " << name << " has entered in Gate keeper mode" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target) {
@@ -55,7 +55,7 @@ void	ScavTrap::attack(const std::string& target) {
 	}
 	this->energyPoints--;
 	this->hitPoints--;
-	std::cout << BOLD << CYAN << "ScavTrap " << this->name \
-			<< " attacks " << target << " causing " << GREEN \
+	std::cout << BOLD << CYAN << "ScavTrap " << name \
+			<< " attacks " << target << " causing " << RED \
 			<< getAttackDamage() << CYAN << " points damage!" << RESET << std::endl;
 };

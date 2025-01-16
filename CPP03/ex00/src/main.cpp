@@ -19,9 +19,9 @@ int	main(void)
 	blip.setEnergyPoints(0);
 	blip.setHitPoints(10);
 
-	blip.attack("You");
+	blip.attack("you");
 	blip.beRepaired(1);
-	blip.attack("A ghost");
+	blip.attack("a ghost");
 
 	return (0);
 }

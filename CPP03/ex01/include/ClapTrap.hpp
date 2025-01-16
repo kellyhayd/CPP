@@ -1,5 +1,5 @@
 #ifndef CLAPTRAP_HPP
-#define CLATRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -30,6 +30,8 @@ public:
 
 	std::string	getName();
 	int			getAttackDamage();
+	void		setHitPoints(int amount);
+	void		setEnergyPoints(int amount);
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);

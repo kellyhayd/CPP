@@ -1,5 +1,5 @@
 #ifndef CLAPTRAP_HPP
-#define CLATRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 #include <iomanip>

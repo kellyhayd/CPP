@@ -1,4 +1,4 @@
-#include "../include/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 // Orthodox Canonical Form rules
 
@@ -9,9 +9,8 @@ ClapTrap::ClapTrap() : name("noName"), hitPoints(10), energyPoints(10), attackDa
 	<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
 };
 
-ClapTrap::ClapTrap(std::string name) : name(), hitPoints(10), energyPoints(10), attackDamage(0) {
-	this->name = name;
-	std::cout << MAGENTA << BOLD << "ClapTrap called "<< name << " was created with:\n" \
+ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
+	std::cout << MAGENTA << BOLD << "ClapTrap called " << GREEN << name << MAGENTA << " was created with:\n" \
 	<< std::setw(10) << GREEN << hitPoints << RESET << " hit points\n" \
 	<< std::setw(10) << GREEN << energyPoints << RESET << " energy points\n" \
 	<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
@@ -33,16 +32,21 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 };
 
 ClapTrap::~ClapTrap() {
-	std::cout << BOLD << RED << "ClapTrap " << YELLOW << this->name \
-		<< RED << " was destroyed 💀" << RESET << std::endl;
+	std::cout << BOLD << RED << "ClapTrap " << this->name \
+		<< " was destroyed 💀" << RESET << std::endl;
 };
 
 
 // Getters and Setters
 
+int		ClapTrap::getAttackDamage() {return (this->attackDamage);};
+
 std::string	ClapTrap::getName() {return (this->name);};
 
-int		ClapTrap::getAttackDamage() {return (this->attackDamage);};
+void	ClapTrap::setHitPoints(int amount) {this->hitPoints = amount;};
+
+void	ClapTrap::setEnergyPoints(int amount) {this->energyPoints = amount;};
+
 
 // Action Functions
 
@@ -58,7 +62,7 @@ void	ClapTrap::attack(const std::string& target) {
 	this->energyPoints--;
 	this->hitPoints--;
 	std::cout << BOLD << CYAN << "Claptrap " << this->name \
-			<< " attacks " << target << " causing " << GREEN \
+			<< " attacks " << target << " causing " << RED \
 			<< getAttackDamage() << CYAN << " points damage!" << RESET << std::endl;
 };
 
@@ -75,7 +79,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	}
 	this->energyPoints -= amount;
 	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " took " \
-		<< RED << amount << CYAN << " points of damage." << RESET << std::endl;
+		<< RED << amount << CYAN << " points of damage" << RESET << std::endl;
 };
 
 void	ClapTrap::beRepaired(unsigned int amount) {
@@ -86,6 +90,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	this->energyPoints--;
 	this->hitPoints += amount;
-	std::cout << BOLD << CYAN << "ClapTrap " << BLUE << this->name << CYAN \
-		<< " repaired itself in " << BLUE << amount << CYAN << " points" << RESET << std::endl;
+	std::cout << BOLD << CYAN << "ClapTrap "<< this->name \
+		<< " repaired itself in " << RED << amount << CYAN << " points" << RESET << std::endl;
 };

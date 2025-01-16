@@ -3,12 +3,12 @@
 FragTrap::FragTrap() : ClapTrap() {
 	this->name = "noName";
 	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
-	std::cout << GREEN << BOLD << "FragTrap without a name was created with:\n" \
-		<< std::setw(10) << YELLOW << hitPoints << RESET << " hit points\n" \
-		<< std::setw(10) << YELLOW << energyPoints << RESET << " energy points\n" \
-		<< std::setw(10) << YELLOW << attackDamage << RESET << " attack damage" <<  std::endl;
+	this->energyPoints = 100;
+	this->attackDamage = 30;
+	std::cout << MAGENTA << BOLD << "FragTrap without a name was created with:\n" \
+		<< std::setw(10) << GREEN << hitPoints << RESET << " hit points\n" \
+		<< std::setw(10) << GREEN << energyPoints << RESET << " energy points\n" \
+		<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
 };
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
@@ -16,10 +16,10 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->hitPoints = 100;
 	this->energyPoints = 100;
 	this->attackDamage = 30;
-	std::cout << GREEN << BOLD << "FragTrap " << YELLOW << name << GREEN << " was created with:\n" \
-		<< std::setw(10) << YELLOW << hitPoints << RESET << " hit points\n" \
-		<< std::setw(10) << YELLOW << energyPoints << RESET << " energy points\n" \
-		<< std::setw(10) << YELLOW << attackDamage << RESET << " attack damage" <<  std::endl;
+	std::cout << MAGENTA << BOLD << "FragTrap " << GREEN << name << MAGENTA << " was created with:\n" \
+		<< std::setw(10) << GREEN << hitPoints << RESET << " hit points\n" \
+		<< std::setw(10) << GREEN << energyPoints << RESET << " energy points\n" \
+		<< std::setw(10) << GREEN << attackDamage << RESET << " attack damage" <<  std::endl;
 };
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
@@ -37,11 +37,11 @@ FragTrap& FragTrap::operator=(const FragTrap& other) {
 }
 
 FragTrap::~FragTrap() {
-	std::cout << BOLD << RED << "FragTrap " << YELLOW << name << RED << " was destroyed 💀" << std::endl;
+	std::cout << BOLD << RED << "FragTrap " << name << " was destroyed 💀" << std::endl;
 };
 
 void	FragTrap::highFivesGuys() {
-	std::cout << BOLD << GREEN << "FragTrap " << YELLOW << name << GREEN << " says: \"High five!\"" << std::endl;
+	std::cout << BOLD << GREEN << "FragTrap "<< name << " says: \"High five!\"" << std::endl;
 }
 
 void	FragTrap::attack(const std::string& target) {
@@ -56,6 +56,6 @@ void	FragTrap::attack(const std::string& target) {
 	this->energyPoints--;
 	this->hitPoints--;
 	std::cout << BOLD << CYAN << "FragTrap " << name \
-			<< " attacks " << target << " causing " << GREEN \
+			<< " attacks " << target << " causing " << RED \
 			<< getAttackDamage() << CYAN << " points damage!" << RESET << std::endl;
 };

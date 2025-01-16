@@ -40,6 +40,11 @@ FragTrap::~FragTrap() {
 	std::cout << BOLD << RED << "FragTrap " << name << " was destroyed 💀" << std::endl;
 };
 
+void	FragTrap::setHitPoints(int amount) {this->hitPoints = amount;};
+
+void	FragTrap::setEnergyPoints(int amount) {this->energyPoints = amount;};
+
+
 void	FragTrap::highFivesGuys() {
 	std::cout << BOLD << GREEN << "FragTrap "<< name << " says: \"High five!\"" << std::endl;
 }

@@ -35,7 +35,8 @@ int main(void) {
 		fighterOne.takeDamage(fighterTwo.getAttackDamage());
 		fighterOne.guardGate();
 		fighterTwo.highFivesGuys();
-		std::cout << "The fight ends because one fighter is in defensive mode\n"
+		
+		std::cout << "\nThe fight ends because one fighter is in defensive mode\n"
 			<< "and the other guy is trying to make peace with a high five!" << std::endl;
 	}
 

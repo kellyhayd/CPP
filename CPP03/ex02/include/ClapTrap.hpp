@@ -30,8 +30,6 @@ public:
 
 	std::string	getName();
 	int			getAttackDamage();
-	void		setHitPoints(int amount);
-	void		setEnergyPoints(int amount);
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);

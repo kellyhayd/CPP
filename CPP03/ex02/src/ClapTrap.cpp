@@ -32,8 +32,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 };
 
 ClapTrap::~ClapTrap() {
-	std::cout << BOLD << RED << "ClapTrap " << this->name \
-		<< " was destroyed 💀" << RESET << std::endl;
+	std::cout << BOLD << RED << "ClapTrap " << YELLOW << this->name \
+		<< RED << " was destroyed 💀" << RESET << std::endl;
 };
 
 
@@ -42,11 +42,6 @@ ClapTrap::~ClapTrap() {
 int		ClapTrap::getAttackDamage() {return (this->attackDamage);};
 
 std::string	ClapTrap::getName() {return (this->name);};
-
-void	ClapTrap::setHitPoints(int amount) {this->hitPoints = amount;};
-
-void	ClapTrap::setEnergyPoints(int amount) {this->energyPoints = amount;};
-
 
 // Action Functions
 
@@ -60,24 +55,19 @@ void	ClapTrap::attack(const std::string& target) {
 		return;
 	}
 	this->energyPoints--;
-	this->hitPoints--;
 	std::cout << BOLD << CYAN << "Claptrap " << this->name \
 			<< " attacks " << target << " causing " << RED \
 			<< getAttackDamage() << CYAN << " points damage!" << RESET << std::endl;
 };
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->energyPoints <= 0) {
+	this->hitPoints -= amount;
+	if (this->hitPoints <= 0) {
 		std::cout << BOLD << RED << "ClapTrap " << this->name \
-			<< " is already dead" << RESET << std::endl;
+			<< " is dead" << RESET << std::endl;
 		return;
 	}
-	else if ((int)amount >= this->energyPoints) {
-		std::cout << BOLD << RED << "ClapTrap " << this->name \
-			<< " was killed" << RESET << std::endl;
-		return;
-	}
-	this->energyPoints -= amount;
+	this->hitPoints -= amount;
 	std::cout << BOLD << CYAN << "ClapTrap " << this->name << " took " \
 		<< RED << amount << CYAN << " points of damage" << RESET << std::endl;
 };

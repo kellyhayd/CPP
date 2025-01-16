@@ -12,6 +12,8 @@ public:
 	~FragTrap();
 
 	const std::string	getName();
+	void		setHitPoints(int amount);
+	void		setEnergyPoints(int amount);
 
 	void	highFivesGuys();
 	void	attack(const std::string& target);

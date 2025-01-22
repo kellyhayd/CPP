@@ -1,46 +1,50 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int main(void) {
 	{
 		std::cout << INVERSE<< "\nSubject test\n" << RESET << std::endl;
 
-		const Animal *meta = new Animal();
-		const Animal *j = new Dog();
-		const Animal *i = new Cat();
+		const Animal	*alpha = new Animal();
+		const Animal	*beta = new Dog();
+		const Animal	*gamma = new Cat();
 		std::cout << std::endl;
 
-		std::cout << BOLD << j->getType() << " " << RESET << std::endl;
-		std::cout << BOLD << i->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << alpha->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << beta->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << gamma->getType() << " " << RESET << std::endl;
 		std::cout << std::endl;
 
-		i->makeSound();
-		j->makeSound();
-		meta->makeSound();
+		alpha->makeSound();
+		beta->makeSound();
+		gamma->makeSound();
 
-		delete meta;
-		delete i;
-		delete j;
+		delete alpha;
+		delete beta;
+		delete gamma;
 	}
 
-	// std::cout << "\nWrong animal test\n" << std::endl;
-	// {
-	// 	const wrongCat *thunder = new wrongCat();
-	// 	const wrongAnimal *meta = new wrongCat();
-	// 	const Animal *j = new Dog();
-	// 	const wrongAnimal *i = new wrongCat();
-	// 	std::cout << thunder->getType() << " " << std::endl;
-	// 	std::cout << j->getType() << " " << std::endl;
-	// 	std::cout << i->getType() << " " << std::endl;
-	// 	i->makeSound(); // will output the cat sound!
-	// 	j->makeSound();
-	// 	thunder->makeSound(); // will output the cat sound
-	// 	meta->makeSound();    // will output the wrong animal sound.
-	// 	delete thunder;
-	// 	delete meta;
-	// 	delete i;
-	// 	delete j;
-	// }
+	std::cout << INVERSE<< "\nWrong animal test\n" << RESET<< std::endl;
+	{
+		const WrongCat		*delta = new WrongCat();
+		const WrongAnimal	*epsilon = new WrongCat();
+		const Animal		*zeta = new Dog();
+		std::cout << std::endl;
+
+		std::cout << BOLD << delta->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << epsilon->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << zeta->getType() << " " << RESET << std::endl;
+		std::cout << BOLD << std::endl;
+
+		delta->makeSound();
+		epsilon->makeSound();
+		zeta->makeSound();
+
+		delete delta;
+		delete epsilon;
+		delete zeta;
+	}
 
 	return (0);
 }

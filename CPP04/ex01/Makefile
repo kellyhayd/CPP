@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME	:= Animals
+NAME	:= Brain
 
 CXX			:= g++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98

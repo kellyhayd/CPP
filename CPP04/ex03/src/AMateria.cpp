@@ -2,33 +2,28 @@
 #include "ICharacter.hpp"
 #include "Colors.hpp"
 
-AMateria::AMateria() : type("default") {
-	std::cout << YELLOW << "AMateria constructor" << RESET << std::endl;
+AMateria::AMateria() : _type("default") {
+	std::cout << BOLD << LIGHTGRAY << "AMateria constructor" << RESET << std::endl;
 };
 
-AMateria::AMateria(std::string const& type) : type(type) {
-	std::cout << YELLOW << "AMateria constructor" << RESET << std::endl;
+AMateria::AMateria(const std::string& type) : _type(type) {
+	std::cout << BOLD << LIGHTGRAY << "AMateria constructor" << RESET << std::endl;
 };
 
-AMateria::AMateria(AMateria const& other) { *this = other; };
+AMateria::AMateria(const AMateria& other) { *this = other; };
 
-AMateria&	AMateria::operator=(AMateria const& other) {
+AMateria&	AMateria::operator=(const AMateria& other) {
 	if (this != &other) {
-		this->type = other.type;
+		this->_type = other._type;
 	}
 	return (*this);
 };
 
 AMateria::~AMateria() {
-	std::cout << YELLOW << "AMateria destructor" << RESET << std::endl;
+	std::cout << BOLD << LIGHTGRAY << "AMateria destructor" << RESET << std::endl;
 };
 
-std::string& const AMateria::getType() const { return (type); };
-
-AMateria*	AMateria::clone() const {
-	return nullptr;
-
-};
+const std::string& AMateria::getType() const { return (this->_type); };
 
 void	AMateria::use(ICharacter& target) {
 	std::cout << "Nothing in use yet for" << target.getName() << std::endl;

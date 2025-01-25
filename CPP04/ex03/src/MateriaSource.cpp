@@ -1,19 +1,23 @@
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
+#include "Colors.hpp"
 
 MateriaSource::MateriaSource() {
-	for (int i = 0; i < 4, i++) {
-		materiaList[i] = NULL;
+	for (int i = 0; i < 4; i++) {
+		_materiaList[i] = NULL;
 	}
 };
 
-MateriaSource::MateriaSource(MateriaSource const& other) { *this = other; };
+MateriaSource::MateriaSource(const MateriaSource& other) { *this = other; };
 
-MateriaSource::MateriaSource& operator=(MateriaSource const& other) {
+MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 	if (this != &other) {
-		for (int i = 0; i < 4, i++) {
-			materiaList[i] = other.materiaList[i]->clone();
-		} else {
-			materiaList[i] = NULL;
+		for (int i = 0; i < 4; i++) {
+			if (_materiaList[i] != NULL) {
+				this->_materiaList[i] = other._materiaList[i]->clone();
+			} else {
+				this->_materiaList[i] = NULL;
+			}
 		}
 	}
 	return (*this);
@@ -21,24 +25,26 @@ MateriaSource::MateriaSource& operator=(MateriaSource const& other) {
 
 MateriaSource::~MateriaSource() {
 	for (int i = 0; i < 4; i++) {
-		delete materiaList[i];
+		delete _materiaList[i];
 	}
 };
 
 void	MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (materiaList[i] == NULL) {
-			materiaList[i] = m;
+		if (_materiaList[i] == NULL) {
+			_materiaList[i] = m;
+			std::cout << RED << "Learned " << RESET << m->getType() << std::endl;
 			break;
 		}
 	}
 };
 
-AMateria*	MateriaSource::createMateria(std::string const& type) {
+AMateria*	MateriaSource::createMateria(const std::string& type) {
 	for (int i = 0; i < 4; i++) {
-		if (materiaList[i] != NULL && materiaList[i]->getType() == type) {
-			return (materiaList[i]->clone());
+		if (_materiaList[i] != NULL && _materiaList[i]->getType() == type) {
+			return (_materiaList[i]->clone());
 		}
 	}
+
 	return (0);
 };

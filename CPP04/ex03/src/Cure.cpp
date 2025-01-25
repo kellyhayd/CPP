@@ -6,11 +6,11 @@ Cure::Cure() : AMateria("cure") {
 	std::cout << GREEN << "Cure constructor" << RESET << std::endl;
 };
 
-Cure::Cure(Cure& const other) : AMateria(other) { *this = other; };
+Cure::Cure(const Cure& other) : AMateria(other) { *this = other; };
 
-Cure& Cure::operator=(Cure& const other) {
+Cure& Cure::operator=(const Cure& other) {
 	if (this != &other) {
-		this->type = other.type;
+		this->_type = other._type;
 	}
 	return (*this);
 };

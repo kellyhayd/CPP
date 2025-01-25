@@ -4,12 +4,11 @@
 #include <iostream>
 #include <string>
 
-#include "Colors.hpp"
-#include "ICharacter.hpp"
+class ICharacter;
 
 class AMateria {
 protected:
-	std::string& const	type;
+	std::string	type;
 
 public:
 

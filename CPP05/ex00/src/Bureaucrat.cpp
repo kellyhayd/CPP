@@ -2,7 +2,7 @@
 #include "Colors.hpp"
 #include <iostream>
 
-Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
 	std::cout << BOLD << LIGHTGRAY << "Bureaucrat " << YELLOW \
 		<< "default " << LIGHTGRAY << "created" << RESET << std::endl;
 };

@@ -14,11 +14,11 @@ public:
 	WrongAnimal();
 	WrongAnimal(const WrongAnimal& other);
 	WrongAnimal& operator=(const WrongAnimal& other);
-	virtual ~WrongAnimal();
+	~WrongAnimal();
 
-	virtual std::string	getType() const;
+	std::string	getType() const;
 
-	virtual void	makeSound() const;
+	void	makeSound() const;
 };
 
 #endif

@@ -28,7 +28,7 @@ int main(void) {
 	// {
 	// 	// WRONG TEST
 
-	// 	const AAnimal	x;
+	// 	AAnimal	x;
 
 	// 	std::cout << x.getType() << std::endl;
 	// 	x.makeSound();

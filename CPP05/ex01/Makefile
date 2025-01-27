@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME := Bureaucrat
+NAME := Form
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98

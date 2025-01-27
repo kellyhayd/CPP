@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form {
 private:
@@ -35,6 +36,6 @@ public:
 	};
 };
 
-std::ostream&	operator<<(std::ostream& out, Form& value);
+std::ostream&	operator<<(std::ostream& out, const Form& value);
 
 #endif

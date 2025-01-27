@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Colors.hpp"
-#include <iostream>
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(0) {
 	std::cout << BOLD << LIGHTGRAY << "Bureaucrat " << YELLOW \
@@ -51,13 +51,26 @@ void	Bureaucrat::decrementGrade() {
 	}
 };
 
+void	Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+		std::cout << BOLD << YELLOW << this->_name << LIGHTGRAY \
+			<< " signed " << CYAN << form.getName() << std::endl;
+	}
+	catch(std::exception &e) {
+		std::cout << BOLD << YELLOW << this->_name << LIGHTGRAY \
+			<< " couldn’t sign " << CYAN << form.getName() << LIGHTGRAY \
+			<< "because " << RED << e.what() << RESET << std::endl;
+	}
+};
+
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return "Grade too high";
-}
+};
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade too low";
-}
+};
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& value) {
 	out << BOLD << YELLOW << value.getName() << LIGHTGRAY \

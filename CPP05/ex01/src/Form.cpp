@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include "Colors.hpp"
 
 Form::Form() : _name("random form"), _signed(false), \
@@ -36,11 +37,19 @@ int	Form::getGradeToSigh() const { return (_gradeToSign); };
 int	Form::getGradeToExecute() const { return (_gradeToExecute); };
 
 void	Form::beSigned(Bureaucrat& bureaucrat) {
-	if (bureaucrat.getGrade() >= this->_gradeToSign) {
+	if (bureaucrat.getGrade() <= this->_gradeToSign) {
 		this->_signed = true;
 	} else {
 		throw GradeTooLowException();
 	}
+};
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade too high";
+};
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade too low";
 };
 
 std::ostream& operator<<(std::ostream& out, const Form& value) {
@@ -48,4 +57,5 @@ std::ostream& operator<<(std::ostream& out, const Form& value) {
 		<< ":\nsigned = " << CYAN << value.getSigned() << LIGHTGRAY << "\ngrade to sign = " \
 		<< CYAN << value.getGradeToSigh() << LIGHTGRAY << "\ngrade to execute = " \
 		<< CYAN << value.getGradeToExecute() << RESET << std::endl;
+	return (out);
 }

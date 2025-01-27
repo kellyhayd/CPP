@@ -1,65 +1,58 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "Colors.hpp"
 #include <iostream>
 
 int main() {
 	std::cout << std::endl;
-	std::cout << INVERSE << "   Testing increment a high grade   " << RESET << std::endl;
-	{
-		try {
-			Bureaucrat highestGrade("Jon Snow", 1);
-			std::cout << highestGrade << std::endl;
+	std::cout << INVERSE << "   Attempting to sign form with low grade   \n" << RESET << std::endl;
+	try {
+		Form form("Application Form", 50, 25);
 
-			highestGrade.incrementGrade();
-			std::cout << highestGrade << std::endl;
-			// this should throw GradeTooHighException
+		Bureaucrat bureaucrat("Jon Snow", 55);
 
-			highestGrade.decrementGrade();
-			std::cout << highestGrade << std::endl;
-			// this should not be executed
+		std::cout << BOLD << "Form details:" << RESET << std::endl;
+		std::cout << form << std::endl;
 
-		} catch (std::exception &e) {
-			std::cerr << "Exception: " << e.what() << std::endl;
-		}
+		std::cout << BOLD << "Attempting to sign the form..." << RESET << std::endl;
+		bureaucrat.signForm(form);
+
+		std::cout << BOLD << "Form details:" << RESET << std::endl;
+		std::cout << form << std::endl;
+
+	} catch (std::exception& e) {
+		std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << INVERSE << "   Testing decrement a low grade   " << RESET << std::endl;
-	{
-		try {
-			Bureaucrat lowestGrade("Cersei", 150);
-			std::cout << lowestGrade << std::endl;
+	std::cout << INVERSE << "\n   Attempting to sign form with high grade   \n" << RESET << std::endl;
+	try {
+		Form form2("Approval Form", 5, 10);
 
-			lowestGrade.decrementGrade();
-			std::cout << lowestGrade << std::endl;
-			// this should throw GradeTooLowException
+		Bureaucrat bureaucrat2("Cersei", 2);
 
-			lowestGrade.incrementGrade();
-			std::cout << lowestGrade << std::endl;
-			// this should not be executed
+		std::cout << BOLD << "Form details:" << RESET << std::endl;
+		std::cout << form2 << std::endl;
 
-		} catch (std::exception &e) {
-			std::cerr << "Exception: " << e.what() << std::endl;
-		}
+		std::cout << BOLD << "Attempting to sign the form..." << RESET << std::endl;
+		bureaucrat2.signForm(form2);
+
+		std::cout << BOLD << "Form details:" << RESET << std::endl;
+		std::cout << form2 << std::endl;
+
+	} catch (std::exception& e) {
+		std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << INVERSE << "   Testing random grade   " << RESET << std::endl;
-	{
-		try {
-			Bureaucrat bureaucrat("Ygritte", 75);
-			std::cout << bureaucrat << std::endl;
-
-			bureaucrat.incrementGrade();
-			std::cout << bureaucrat << std::endl;
-
-			bureaucrat.decrementGrade();
-			std::cout << bureaucrat << std::endl;
-
-			while (bureaucrat.getGrade() > 42)
-				bureaucrat.incrementGrade();
-			std::cout << bureaucrat << std::endl;
-		} catch (std::exception &e) {
-			std::cerr << "Exception: " << e.what() << std::endl;
-		}
+	std::cout << INVERSE << "\n   Attempting to create a form with invalids grades   \n" << RESET << std::endl;
+	try {
+		Form form3("Wrong Form", 0, 10);
+	} catch (std::exception& e) {
+		std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
+	}
+	try {
+		Form form4("Wrong Form 2", 10, 155);
+	} catch (std::exception& e) {
+		std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
 	}
 
 	return 0;

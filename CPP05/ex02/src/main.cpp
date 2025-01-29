@@ -2,106 +2,123 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Colors.hpp"
 
 int main() {
-	// std::cout << std::endl;
-	// std::cout << INVERSE << "   Attempting to sign form with low grade   \n" << RESET << std::endl;
-	// try {
-	// 	AForm form("Application AForm", 50, 25);
+	std::cout << std::endl;
+	{
+		std::cout << INVERSE << "   Attempting to execute form with low grade   \n" << RESET << std::endl;
+		try {
+			Bureaucrat sansa("Sansa", 143);
+			ShrubberyCreationForm treeForm("Westerland");
 
-	// 	Bureaucrat bureaucrat("Jon Snow", 55);
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << treeForm << std::endl;
 
-	// 	std::cout << BOLD << "AForm details:" << RESET << std::endl;
-	// 	std::cout << form << std::endl;
+			sansa.signForm(treeForm);
 
-	// 	std::cout << BOLD << "Attempting to sign the form..." << RESET << std::endl;
-	// 	bureaucrat.signForm(form);
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			sansa.executeForm(treeForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
 
-	// 	std::cout << BOLD << "AForm details:" << RESET << std::endl;
-	// 	std::cout << form << std::endl;
+		std::cout << std::endl;
 
-	// } catch (std::exception& e) {
-	// 	std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
-	// }
-	// std::cout << std::endl;
-	// std::cout << INVERSE << "\n   Attempting to sign form with high grade   \n" << RESET << std::endl;
-	// try {
-	// 	AForm form2("Approval AForm", 5, 10);
+		try {
+			Bureaucrat sansa("Sansa", 80);
+			RobotomyRequestForm robotForm("Westerland");
 
-	// 	Bureaucrat bureaucrat2("Cersei", 2);
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << robotForm << std::endl;
 
-	// 	std::cout << BOLD << "AForm details:" << RESET << std::endl;
-	// 	std::cout << form2 << std::endl;
+			sansa.signForm(robotForm);
 
-	// 	std::cout << BOLD << "Attempting to sign the form..." << RESET << std::endl;
-	// 	bureaucrat2.signForm(form2);
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			sansa.executeForm(robotForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
 
-	// 	std::cout << BOLD << "AForm details:" << RESET << std::endl;
-	// 	std::cout << form2 << std::endl;
+		std::cout << std::endl;
 
-	// } catch (std::exception& e) {
-	// 	std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
-	// }
-	// std::cout << std::endl;
-	// std::cout << INVERSE << "\n   Attempting to create a form with invalids grades   \n" << RESET << std::endl;
-	// try {
-	// 	AForm form3("Wrong AForm", 0, 10);
-	// } catch (std::exception& e) {
-	// 	std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
-	// }
-	// try {
-	// 	AForm form4("Wrong AForm 2", 10, 155);
-	// } catch (std::exception& e) {
-	// 	std::cout << BOLD <<  "Exception caught: " << RED << e.what() << RESET << std::endl;
-	// }
+		try {
+			Bureaucrat sansa("Sansa", 42);
+			PresidentialPardonForm pardomForm("Westerland");
 
-	Bureaucrat jaime("Jaime", 10);
-    std::cout << jaime << std::endl;
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << pardomForm << std::endl;
 
-    RobotomyRequestForm robot("home");
-    std::cout << robot << std::endl;
-	 try
-    {
-        jaime.signForm(robot);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-	 try
-    {
-        jaime.executeForm(robot);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+			sansa.signForm(pardomForm);
 
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			sansa.executeForm(pardomForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
 
+	}
 
 	std::cout << std::endl;
 
-	Bureaucrat claire("Claire", 100);
-    std::cout << claire << std::endl;
+	{
+		std::cout << INVERSE << "   Attempting to execute form with high grade   \n" << RESET << std::endl;
+		try {
+			Bureaucrat arya("Arya", 35);
+			ShrubberyCreationForm treeForm("Winterfell");
 
-    ShrubberyCreationForm shrwabs("home");
-    std::cout << shrwabs << std::endl;
-	 try
-    {
-        claire.signForm(shrwabs);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-	 try
-    {
-        claire.executeForm(shrwabs);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << treeForm << std::endl;
+
+			arya.signForm(treeForm);
+
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			arya.executeForm(treeForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
+
+		std::cout << std::endl;
+
+		try {
+			Bureaucrat arya("Arya", 17);
+			RobotomyRequestForm robotForm("Winterfell");
+
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << robotForm << std::endl;
+
+			arya.signForm(robotForm);
+
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			arya.executeForm(robotForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
+
+		std::cout << std::endl;
+
+		try {
+			Bureaucrat arya("Arya", 1);
+			PresidentialPardonForm pardomForm("Winterfell");
+
+			std::cout << BOLD << "Form details:" << RESET << std::endl;
+			std::cout << pardomForm << std::endl;
+
+			arya.signForm(pardomForm);
+
+			std::cout << BOLD << "Attempting to execute the form..." << RESET << std::endl;
+			arya.executeForm(pardomForm);
+		} catch (std::exception& e) {
+			std::cout << std::endl;
+			std::cout << BOLD << "Exception caught: " << RED << e.what() << RESET << std::endl;
+		}
+	}
+
 	return 0;
 }

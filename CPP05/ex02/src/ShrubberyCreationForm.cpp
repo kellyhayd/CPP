@@ -20,14 +20,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 ShrubberyCreationForm::~ShrubberyCreationForm() {};
 
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-	try {
-		this->getSigned();
-	} catch(std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-	if (executor.getGrade() > this->getGradeToExecute()) {
+	if (!this->getSigned() || executor.getGrade() > this->getGradeToExecute()) {
+		std::cout << BOLD << YELLOW << executor.getName() << RED << " not executed " \
+			<< CYAN << this->getName() << std::endl;
 		throw GradeTooLowException();
-		// return;
 	}
 	std::ofstream	file((this->_target + "_shrubbery").c_str());
 	if (!file.is_open()) {

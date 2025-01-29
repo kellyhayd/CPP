@@ -21,10 +21,9 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 RobotomyRequestForm::~RobotomyRequestForm() {};
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-	if (!this->getSigned()) {
-		throw GradeTooLowException();
-	}
-	if (executor.getGrade() > this->getGradeToExecute()) {
+	if (!this->getSigned() || executor.getGrade() > this->getGradeToExecute()) {
+		std::cout << BOLD << YELLOW << executor.getName() << RED << " not executed " \
+			<< CYAN << this->getName() << std::endl;
 		throw GradeTooLowException();
 	}
 	std::srand(std::time(0));

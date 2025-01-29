@@ -19,10 +19,9 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 PresidentialPardonForm::~PresidentialPardonForm() {};
 
 void	PresidentialPardonForm::execute(const Bureaucrat& executor) const {
-	if (!this->getSigned()) {
-		throw GradeTooLowException();
-	}
-	if (executor.getGrade() > this->getGradeToExecute()) {
+	if (!this->getSigned() || executor.getGrade() > this->getGradeToExecute()) {
+		std::cout << BOLD << YELLOW << executor.getName() << RED << " not executed " \
+			<< CYAN << this->getName() << std::endl;
 		throw GradeTooLowException();
 	}
 	std::cout << BOLD << YELLOW << executor.getName() << LIGHTGRAY \

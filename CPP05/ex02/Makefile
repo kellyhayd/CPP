@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME := Form
+NAME := Forms
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98

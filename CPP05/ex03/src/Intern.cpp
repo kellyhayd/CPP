@@ -26,27 +26,27 @@ Intern::~Intern() {
 	std::cout << BOLD << LIGHTGRAY << "Intern destroyed" << RESET << std::endl;
 };
 
+static AForm*	presidentialForm(std::string target) {
+	return (new PresidentialPardonForm(target));
+};
+
+static AForm*	robotomyForm(std::string target) {
+	return (new RobotomyRequestForm(target));
+};
+
+static AForm*	shrubberyForm(std::string target) {
+	return (new ShrubberyCreationForm(target));
+}
+
 AForm*	Intern::makeForm(std::string formType, std::string target) {
 	std::string	forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-	AForm*	form = NULL;
+	AForm* (*fun[3])(std::string) = {&presidentialForm, &robotomyForm, &shrubberyForm};
 
-	int	idx = 0;
 	for (int i = 0; i < 3; i++) {
 		if (!formType.compare(forms[i])) {
-			break;
+			return (fun[i](target));
 		}
-		idx++;
 	}
-	switch (idx)
-	{
-		case 0:
-			return (form = new PresidentialPardonForm(target));
-		case 1:
-			return (form = new RobotomyRequestForm(target));
-		case 2:
-			return (form = new ShrubberyCreationForm(target));
-		default:
-			std::cout << RED << "Form not found" << RESET << std::endl;
-			return NULL;
-	}
+	std::cout << BOLD << RED << "Type of form not found" << RESET << std::endl;
+	return (NULL);
 }

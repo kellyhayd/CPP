@@ -6,6 +6,10 @@
 
 ScalarConverter::~ScalarConverter() {};
 
+static void	printDouble(double d) {
+		std::cout << BOLD << "double: " << CYAN << d << RESET << std::endl;
+}
+
 static void	printFloat(std::string value, float f) {
 	std::cout << BOLD << "float: " << CYAN << f;
 
@@ -22,15 +26,15 @@ static void	printFloat(std::string value, float f) {
 	}
 }
 
-static void	printChar(std::string value, int i) {
-	if ((value.length() > 1 && !std::isdigit(value[0])) || i < -128 || i > 127) {
+static void	printChar(int i) {
+	if (i < -128 || i > 127) {
 		std::cout << BOLD << "char: " << RED << "impossible" << RESET << std::endl;
 	}
 	else if (!std::isprint(i)) {
 		std::cout << BOLD << "char: " << RED << "Non displayable" << RESET << std::endl;
 	}
 	else {
-		char	c = i;
+		char	c = static_cast<char>(i);
 		std::cout << BOLD << "char: " << CYAN << c << RESET << std::endl;
 	}
 };
@@ -42,23 +46,31 @@ static bool	isFloat(std::string value) {
 void	ScalarConverter::convert(const std::string& value) {
 	float	f;
 	double	d;
+	char	c;
 
 	if (value.length() == 1 && std::isdigit(value[0]) && std::isprint(value[0])) {
 		f = strtof(value.c_str(), NULL);
 		d = static_cast<double>(f);
 	}
+	else if (value.length() == 1 && !std::isdigit(value[0])) {
+		c = value[0];
+		f = static_cast<float>(c);
+		d = static_cast<double>(f);
+	}
 	else {
 		if (isFloat(value)) {
-			f = strtof(value.c_str(), NULL);
+			f = atof(value.c_str());
 			d = static_cast<double>(f);
 		} else {
-			d = strtod(value.c_str(), NULL);
+			d = atof(value.c_str());
 			f = static_cast<float>(d);
 		}
 	}
 	int	i = static_cast<int>(f);
-	printChar(value, i);
+	std::cout << i << std::endl;
+	printChar(i);
 	printFloat(value, f);
+	printDouble(d);
 };
 
 

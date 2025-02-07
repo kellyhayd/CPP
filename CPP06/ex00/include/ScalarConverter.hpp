@@ -7,7 +7,7 @@ class ScalarConverter {
 public:
 	~ScalarConverter();
 
-	static void	convert(std::string value);
+	static void	convert(const std::string& value);
 };
 
 

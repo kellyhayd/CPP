@@ -1,13 +1,13 @@
 .SILENT:
 
-NAME := 	Scalar
+NAME :=	Scalar
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 INCLUDE := -Iinclude/
 SRCDIR := src/
-SRC := $(addprefix $(SRCDIR), ScalarConverter.cpp, main.cpp)
+SRC := $(addprefix $(SRCDIR), ScalarConverter.cpp main.cpp)
 OBJ := $(SRC:%.cpp=%.o)
 
 all: $(NAME)
@@ -15,7 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-.o:.cpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:

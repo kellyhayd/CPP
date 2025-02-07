@@ -1,12 +1,38 @@
 #include "ScalarConverter.hpp"
+#include "Colors.hpp"
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
 
 ScalarConverter::~ScalarConverter() {};
 
-void	printChar(char value, bool isChar) {
+static void	printFloat(std::string value, float f) {
+	std::cout << BOLD << "float: " << CYAN << f;
 
+	bool	hasDot = false;
+	for (size_t i = 0 ; i < value.length(); i++) {
+		if (value[i] == '.') {
+			hasDot = true;
+		}
+	}
+	if (hasDot == true) {
+		std::cout << "f" << RESET << std::endl;
+	} else {
+		std::cout << ".0f" << RESET << std::endl;
+	}
+}
+
+static void	printChar(std::string value, int i) {
+	if ((value.length() > 1 && !std::isdigit(value[0])) || i < -128 || i > 127) {
+		std::cout << BOLD << "char: " << RED << "impossible" << RESET << std::endl;
+	}
+	else if (!std::isprint(i)) {
+		std::cout << BOLD << "char: " << RED << "Non displayable" << RESET << std::endl;
+	}
+	else {
+		char	c = i;
+		std::cout << BOLD << "char: " << CYAN << c << RESET << std::endl;
+	}
 };
 
 static bool	isFloat(std::string value) {
@@ -16,12 +42,12 @@ static bool	isFloat(std::string value) {
 void	ScalarConverter::convert(const std::string& value) {
 	float	f;
 	double	d;
-	bool	isChar = false;
 
 	if (value.length() == 1 && std::isdigit(value[0]) && std::isprint(value[0])) {
 		f = strtof(value.c_str(), NULL);
 		d = static_cast<double>(f);
-	} else {
+	}
+	else {
 		if (isFloat(value)) {
 			f = strtof(value.c_str(), NULL);
 			d = static_cast<double>(f);
@@ -30,9 +56,9 @@ void	ScalarConverter::convert(const std::string& value) {
 			f = static_cast<float>(d);
 		}
 	}
-	int		i = static_cast<int>(f);
-	printChar(value[0], isChar);
-	// std::cout << "char: " << c << "\nint: " << i << "\nfloat: " << f << "\ndouble: " << d << std::endl;
+	int	i = static_cast<int>(f);
+	printChar(value, i);
+	printFloat(value, f);
 };
 
 

@@ -3,11 +3,25 @@
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
+#include <climits>
 
 ScalarConverter::~ScalarConverter() {};
 
-static void	printDouble(double d) {
-		std::cout << BOLD << "double: " << CYAN << d << RESET << std::endl;
+static void	printDouble(std::string value, double d) {
+	std::cout << BOLD << "double: " << CYAN << d;
+
+	bool	hasDot = false;
+	for (size_t i = 0 ; i < value.length(); i++) {
+		if (value[i] == '.') {
+			hasDot = true;
+			std::cout << RESET << std::endl;
+			return;
+		}
+	}
+	if (hasDot == false && !std::isnan(d)) {
+		std::cout << ".0";
+	}
+	std::cout << RESET << std::endl;
 }
 
 static void	printFloat(std::string value, float f) {
@@ -19,11 +33,19 @@ static void	printFloat(std::string value, float f) {
 			hasDot = true;
 		}
 	}
-	if (hasDot == true) {
+	if (hasDot == true || std::isnan(f)) {
 		std::cout << "f" << RESET << std::endl;
 	} else {
 		std::cout << ".0f" << RESET << std::endl;
 	}
+}
+
+static void	printInt(double d, int i) {
+	if (std::isnan(d) || d < INT_MIN || d > INT_MAX) {
+		std::cout << BOLD << "int: " << RED << "impossible" << RESET << std::endl;
+		return;
+	}
+	std::cout << BOLD << "int: " << CYAN << i << RESET << std::endl;
 }
 
 static void	printChar(int i) {
@@ -67,10 +89,11 @@ void	ScalarConverter::convert(const std::string& value) {
 		}
 	}
 	int	i = static_cast<int>(f);
-	std::cout << i << std::endl;
+
 	printChar(i);
+	printInt(d, i);
 	printFloat(value, f);
-	printDouble(d);
+	printDouble(value, d);
 };
 
 

@@ -32,6 +32,8 @@ void	identify(Base* p) {
 		std::cout << GREEN << "Base B" << RESET << std::endl;
 	} else if (dynamic_cast<C*>(p)) {
 		std::cout << MAGENTA << "Base C" << RESET << std::endl;
+	} else {
+		std::cout << RED << "Base not recognized" << RESET << std::endl;
 	}
 };
 

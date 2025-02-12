@@ -1,9 +1,11 @@
 #include "ScalarConverter.hpp"
 #include "Colors.hpp"
+#include <iostream>
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
 #include <climits>
+#include <limits>
 
 ScalarConverter::ScalarConverter() {};
 
@@ -19,31 +21,40 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 ScalarConverter::~ScalarConverter() {};
 
 static void	printDouble(std::string value, double d) {
-	std::cout << BOLD << "double: " << CYAN << d;
+	std::cout << BOLD << "double: " << RESET;
 
+	if ((d < std::floor(d) || d > std::ceil(d))) {
+			std::cout << RED << "impossible" << RESET << std::endl;
+			return;
+	}
 	for (std::string::iterator it = value.begin(); it < value.end(); it++) {
-		if ((*it == '.' || std::isnan(d) || std::isinf(d)) && *value.rbegin() != '0' ) {
-			std::cout << RESET << std::endl;
+		if ((*it == '.' || std::isnan(d) || std::isinf(d))) {
+			std::cout << CYAN << d << RESET << std::endl;
 			return;
 		}
 	}
-	std::cout << ".0" << RESET << std::endl;
+	std::cout << CYAN << d << ".0" << RESET << std::endl;
 }
 
 static void	printFloat(std::string value, float f) {
-	std::cout << BOLD << "float: " << CYAN << f;
+	std::cout << BOLD << "float: " << RESET;
 
+	if (f < std::floor(f) || f > std::ceil(f)) {
+			std::cout << RED << "impossible" << RESET << std::endl;
+			return;
+	}
 	for (std::string::iterator it = value.begin(); it < value.end(); it++) {
-		if ((*it == '.' || std::isnan(f) || std::isinf(f)) && *value.rbegin() != '0') {
-			std::cout << "f" << RESET << std::endl;
+		if ((*it == '.' || std::isnan(f) || std::isinf(f))) {
+			std::cout << CYAN << f << "f" << RESET << std::endl;
 			return;
 		}
 	}
-	std::cout << ".0f" << RESET << std::endl;
+	std::cout << CYAN << f << ".0f" << RESET << std::endl;
 }
 
-static void	printInt(double d, int i) {
-	if (std::isnan(d) || d < INT_MIN || d > INT_MAX) {
+static void	printInt(std::string value, double d, int i) {
+	if (std::isnan(d) || std::atol(value.c_str()) > static_cast<long int>(std::numeric_limits<int>::max()) ||
+		std::atol(value.c_str()) < static_cast<long int>(std::numeric_limits<int>::min())) {
 		std::cout << BOLD << "int: " << RED << "impossible" << RESET << std::endl;
 		return;
 	}
@@ -78,14 +89,20 @@ static bool	validateInput(std::string value) {
 		if (std::isdigit(value[0]) || value[0] == '-' || value[0] == '+') {
 			int dot = 0;
 			for (std::string::iterator it = value.begin(); it < value.end(); it++) {
-				if (value[0] == '-' || value[0] == '+') {
-					it++;
+				if (it == value.begin() && (*it == '-' || *it == '+')) {
+					continue;
 				}
 				if (*it == '.') {
 					dot++;
 					if (dot > 1) {
 						return (false);
 					}
+				}
+				else if (*it == 'e' || *it == 'E') {
+					if (it + 1 == value.end() || (!std::isdigit(*(it + 1)) && *(it + 1) != '+' && *(it + 1) != '-')) {
+						return (false);
+					}
+					it++;
 				}
 				else if (!std::isdigit(*it) && !(*value.rbegin() == 'f')) {
 					return (false);
@@ -127,84 +144,7 @@ void	ScalarConverter::convert(const std::string& value) {
 	int	i = static_cast<int>(f);
 
 	printChar(i);
-	printInt(d, i);
+	printInt(value, d, i);
 	printFloat(value, f);
 	printDouble(value, d);
 };
-
-/*
-	validar:
-		* só um caractere == char ou int;
-		* mais de um caracter:
-			- UM ponto antes do final == double;
-				. f no final == float;
-			- MAIS de UM ponto == FALSE;
-			- Ñ DÍGITO no meio == FALSE;
-			- > ou < que LIMITS == FALSE;
-			- -inff, +inff, -inf, +inf and nan
-
-*/
-
-// static void	printDouble(std::string value, double d) {
-// 	std::cout << BOLD << "double: " << CYAN << d;
-
-// 	bool	hasDot = false;
-// 	for (size_t i = 0 ; i < value.length(); i++) {
-// 		if (value[i] == '.') {
-// 			hasDot = true;
-// 			std::cout << RESET << std::endl;
-// 			return;
-// 		}
-// 	}
-// 	if (hasDot == false && !std::isnan(d)) {
-// 		std::cout << ".0";
-// 	}
-// 	std::cout << RESET << std::endl;
-// }
-
-// static void	printFloat(std::string value, float f) {
-// 	std::cout << BOLD << "float: " << CYAN << f;
-
-// 	bool	hasDot = false;
-// 	for (size_t i = 0 ; i < value.length(); i++) {
-// 		if (value[i] == '.') {
-// 			hasDot = true;
-// 		}
-// 	}
-// 	if (hasDot == true || std::isnan(f)) {
-// 		std::cout << "f" << RESET << std::endl;
-// 	} else {
-// 		std::cout << ".0f" << RESET << std::endl;
-// 	}
-// }
-
-// static void	printInt(double d, int i) {
-// 	if (std::isnan(d) || d < INT_MIN || d > INT_MAX) {
-// 		std::cout << BOLD << "int: " << RED << "impossible" << RESET << std::endl;
-// 		return;
-// 	}
-// 	std::cout << BOLD << "int: " << CYAN << i << RESET << std::endl;
-// }
-
-// static void	printChar(int i) {
-// 	if (i < -128 || i > 127) {
-// 		std::cout << BOLD << "char: " << RED << "impossible" << RESET << std::endl;
-// 	}
-// 	else if (!std::isprint(i)) {
-// 		std::cout << BOLD << "char: " << RED << "Non displayable" << RESET << std::endl;
-// 	}
-// 	else {
-// 		char	c = static_cast<char>(i);
-// 		std::cout << BOLD << "char: " << CYAN << c << RESET << std::endl;
-// 	}
-// };
-
-// static bool	isFloat(std::string value) {
-// 	return (value[value.length() - 1] =='f' ? true : false);
-// };
-
-
-
-
-// // double strtod(const char *nptr, char **endptr);
-// // float strtof(const char *nptr, char **endptr);

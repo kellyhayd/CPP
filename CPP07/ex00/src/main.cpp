@@ -1,4 +1,5 @@
 #include "whatever.hpp"
+#include "colors.hpp"
 
 int	main() {
 	std::cout << INVERSE << "   Testing with an int   \n" << RESET << std::endl;

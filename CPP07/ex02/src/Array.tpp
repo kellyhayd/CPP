@@ -8,7 +8,7 @@ Array<T>::Array(unsigned int n) : _data(new T[n]), _size(n) {};
 
 template <typename T>
 Array<T>::Array(const Array& other) {
-	_data = new T(other._size);
+	_data = new T[other._size];
 	_size = other._size;
 	for (unsigned int i = 0; i < other._size; i++) {
 		_data[i] = other._data[i];

@@ -53,8 +53,8 @@ static void	printFloat(std::string value, float f) {
 }
 
 static void	printInt(std::string value, double d, int i) {
-	if (std::isnan(d) || std::atol(value.c_str()) > static_cast<long int>(std::numeric_limits<int>::max()) ||
-		std::atol(value.c_str()) < static_cast<long int>(std::numeric_limits<int>::min())) {
+	if (std::isnan(d) || std::isinf(d) || std::atol(value.c_str()) > static_cast<long int>(std::numeric_limits<int>::max())
+		|| std::atol(value.c_str()) < static_cast<long int>(std::numeric_limits<int>::min())) {
 		std::cout << BOLD << "int: " << RED << "impossible" << RESET << std::endl;
 		return;
 	}

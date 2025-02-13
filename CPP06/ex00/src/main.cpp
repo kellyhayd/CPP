@@ -73,10 +73,6 @@ int main() {
 	ScalarConverter::convert("-inf");
 
 	std::cout << std::endl;
-	std::cout << YELLOW << ("Testing double: '42.00001'") << RESET << std::endl;
-	ScalarConverter::convert("42.00001");
-
-	std::cout << std::endl;
 	std::cout << YELLOW << ("Testing double: '-1234.5678'") << RESET << std::endl;
 	ScalarConverter::convert("-1234.5678");
 

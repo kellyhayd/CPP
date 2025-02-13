@@ -61,14 +61,20 @@ static void	printInt(std::string value, double d, int i) {
 	std::cout << BOLD << "int: " << CYAN << i << RESET << std::endl;
 }
 
-static void	printChar(int i) {
+static void	printChar(std::string value, int i) {
 	if (i < -128 || i > 127) {
 		std::cout << BOLD << "char: " << RED << "impossible" << RESET << std::endl;
-	}
-	else if (!std::isprint(i)) {
-		std::cout << BOLD << "char: " << RED << "Non displayable" << RESET << std::endl;
-	}
-	else {
+	} else {
+		for (std::string::iterator it = value.begin(); it < value.end(); it++) {
+			if (*it == '.') {
+				std::cout << BOLD << "char: " << RED << "impossible" << RESET << std::endl;
+				return;
+			}
+		}
+		if (!std::isprint(i)) {
+			std::cout << BOLD << "char: " << RED << "Non displayable" << RESET << std::endl;
+			return;
+		}
 		char	c = static_cast<char>(i);
 		std::cout << BOLD << "char: " << CYAN << c << RESET << std::endl;
 	}
@@ -143,7 +149,7 @@ void	ScalarConverter::convert(const std::string& value) {
 	}
 	int	i = static_cast<int>(f);
 
-	printChar(i);
+	printChar(value, i);
 	printInt(value, d, i);
 	printFloat(value, f);
 	printDouble(value, d);

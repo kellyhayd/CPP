@@ -1,6 +1,7 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+
 #include <iostream>
 
 template <typename T>
@@ -22,5 +23,7 @@ public:
 	const T& operator[](unsigned int index) const;
 
 };
+
+#include "../src/Array.tpp"
 
 #endif

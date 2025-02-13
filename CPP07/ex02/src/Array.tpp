@@ -10,7 +10,7 @@ template <typename T>
 Array<T>::Array(const Array& other) {
 	_data = new T(other._size);
 	_size = other._size;
-	for (int i = 0; i < other._size; i++) {
+	for (unsigned int i = 0; i < other._size; i++) {
 		_data[i] = other._data[i];
 	}
 };
@@ -38,15 +38,15 @@ unsigned int	Array<T>::size() const { return (this._size); };
 
 template <typename T>
 T& Array<T>::operator[](unsigned int index) {
-	if (index >= this._size) {
-		throw std::out_of_range(RED "Index is out of bounds");
+	if (index >= this->_size) {
+		throw std::out_of_range("Index is out of bounds");
 	}
 	return (this->_data[index]);
 };
 
 template <typename T>
 const T& Array<T>::operator[](unsigned int index) const {
-	if (index >= this._size) {
+	if (index >= this->_size) {
 		throw std::out_of_range("Index is out of bounds");
 	}
 	return (this->_data[index]);

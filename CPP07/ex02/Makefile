@@ -1,6 +1,6 @@
 .SILENT:
 
-NAME := iter
+NAME := array
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98

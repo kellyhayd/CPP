@@ -6,16 +6,16 @@
 #include <iostream>
 
 template <typename T>
-void	iter(T* array, size_t lengh, void (*fun)(T&)) {
+void	iter(T* array, size_t lengh, void (*func)(T&)) {
 	for (size_t i = 0; i < lengh; i++) {
-		fun(array[i]);
+		func(array[i]);
 	}
 }
 
 template <typename T>
-void	iter(T* array, size_t lengh, void (*fun)(const T&)) {
+void	iter(T* array, size_t lengh, void (*func)(const T&)) {
 	for (size_t i = 0; i < lengh; i++) {
-		fun(array[i]);
+		func(array[i]);
 	}
 }
 

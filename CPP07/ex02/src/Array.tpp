@@ -1,4 +1,5 @@
 #include "../include/Array.hpp"
+#include "colors.hpp"
 
 template <typename T>
 Array<T>::Array() : _data(NULL), _size(0) {};
@@ -34,7 +35,7 @@ Array<T>::~Array() {
 };
 
 template <typename T>
-unsigned int	Array<T>::size() const { return (this._size); };
+unsigned int	Array<T>::size() const { return (this->_size); };
 
 template <typename T>
 T& Array<T>::operator[](unsigned int index) {

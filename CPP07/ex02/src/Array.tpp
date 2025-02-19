@@ -22,7 +22,7 @@ Array<T>& Array<T>::operator=(const Array<T>& other) {
 		delete[] _data;
 		_data = new T(other._size);
 		_size = other._size;
-		for (int i = 0; i < other._size; i++) {
+		for (unsigned int i = 0; i < other._size; i++) {
 			_data[i] = other._data[i];
 		}
 	}

@@ -14,7 +14,7 @@ int	main() {
 		<< " " << RESET << std::endl;
 
 	// intengers for the containers
-	int	values[] = {1, 2, 3, 7, 11, 13};
+	int	values[] = {1, 2, 3, 5, 7, 11, 13};
 
 	// vector container
 	std::cout << INVERSE << "\n   Vector of int   " << RESET << std::endl;

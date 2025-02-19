@@ -1,5 +1,6 @@
 #include "Span.hpp"
 #include <algorithm>
+#include <limits>
 
 Span::Span(unsigned int N) : _maxSize(N) {};
 
@@ -23,11 +24,29 @@ void	Span::addNumber(int value) {
 };
 
 int	Span::shortestSpan() {
-	return (*std::min_element(_content.begin(), _content.end()));
+	if (_content.size() < 2)
+		throw std::logic_error("There is no numbers enough to have a span");
+	int minSpan = std::numeric_limits<int>::max();
+	for (size_t i = 1; i < _content.size(); i++) {
+		int	span = _content[i] - _content[i - 1];
+		if (abs(span) < minSpan) {
+			minSpan = abs(span);
+		}
+	}
+	return (minSpan);
 };
 
 int	Span::longestSpan() {
-	return (*std::max_element(_content.begin(), _content.end()));
+		if (_content.size() < 2)
+		throw std::logic_error("There is no numbers enough to have a span");
+	int maxSpan = std::numeric_limits<int>::min();
+	for (size_t i = 1; i < _content.size(); i++) {
+		int	span = _content[i] - _content[i - 1];
+		if (abs(span) > maxSpan) {
+			maxSpan = abs(span);
+		}
+	}
+	return (maxSpan);
 };
 
 std::vector<int>	Span::getContent() { return (this->_content); }

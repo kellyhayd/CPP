@@ -2,10 +2,9 @@
 #include "colors.hpp"
 
 int	main() {
-	int	N = 7;
-	Span	span(N);
-	int	values[] = {1, 2, 3, 5, 7, 11, 13};
-	for (int i = 0; i < N; i++) {
+	Span	span(5);
+	int	values[] = {6, 3, 17, 9, 11};
+	for (int i = 0; i < 5; i++) {
 		span.addNumber(values[i]);
 	}
 
@@ -24,8 +23,8 @@ int	main() {
 	}
 	std::cout << RESET << std::endl;
 
-	std::cout << BOLD << "min value: " << YELLOW << span.shortestSpan() << RESET << std::endl;
-	std::cout << BOLD << "max value: " << YELLOW << span.longestSpan() << RESET << std::endl;
+	std::cout << BOLD << "shortest span: " << YELLOW << span.shortestSpan() << RESET << std::endl;
+	std::cout << BOLD << "longest span: " << YELLOW << span.longestSpan() << RESET << std::endl;
 	std::cout << RESET << std::endl;
 
 	return (0);

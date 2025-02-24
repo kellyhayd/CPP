@@ -2,7 +2,7 @@
 #include "colors.hpp"
 
 template <typename T>
-Array<T>::Array() : _data(NULL), _size(0) {};
+Array<T>::Array() : _data(new T[0]), _size(0) {};
 
 template <typename T>
 Array<T>::Array(unsigned int n) : _data(new T[n]), _size(n) {};

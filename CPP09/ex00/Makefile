@@ -8,18 +8,20 @@ SRCDIR	:= src/
 SRC	:= $(addprefix $(SRCDIR), \
 	BitcoinExchange.cpp \
 	main.cpp)
-OBJ	:= $(SRC:.cpp=.o)
+BUILD	:= build/
+OBJ	:= 	$(SRC:$(SRCDIR)%.cpp=$(BUILD)%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+$(BUILD)%.o: $(SRCDIR)%.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(BUILD)
 
 fclean: clean
 	rm -f $(NAME)

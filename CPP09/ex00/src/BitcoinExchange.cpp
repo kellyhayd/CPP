@@ -2,8 +2,6 @@
 #include "colors.hpp"
 
 #include <fstream>
-#include <stdlib.h>
-#include <sstream>
 
 static void	fillData(std::map<std::string, float>& data) {
 	std::ifstream	file("data.csv");
@@ -17,37 +15,46 @@ static void	fillData(std::map<std::string, float>& data) {
 				std::cerr << "Error: Invalid data format" << std::endl;
 				continue;
 			}
-			std::stringstream	ss(value);
-			float	price;
-			ss >> price;
-			if (price < 0) {
-				std::cerr << "Error: Negative price" << std::endl;
+			float	rate = std::strtof(value.c_str(), 0);
+			if (rate < 0) {
+				std::cerr << "Error: Negative rate" << std::endl;
 				continue;
 			}
-			data[date] = price;
+			data[date] = rate;
 		}
 	}
 }
 
 BitcoinExchange::BitcoinExchange() {
-	fillData(this->data);
-	if (this->data.empty()) {
+	fillData(this->_data);
+	if (this->_data.empty()) {
 		std::cerr << "Error: No data found" << std::endl;
 		return;
 	}
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
-	this->data = copy.data;
+	this->_data = copy._data;
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &copy) {
 	if (this != &copy) {
-		this->data = copy.data;
+		this->_data = copy._data;
 	}
 	return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange() {}
 
-std::map<std::string, float>	BitcoinExchange::getData() const { return (this->data); }
+std::map<std::string, float>	BitcoinExchange::getData() const { return (this->_data); }
+
+void	BitcoinExchange::processInput(std::ifstream& file) {
+	std::string	line;
+	std::getline(file, line);
+	std::string	date = line.substr(0, line.find('|'));
+	if (date.empty()) {
+		// invalid input
+	} else if (!validateDate(date)) {
+		// invalid data
+	} 
+}

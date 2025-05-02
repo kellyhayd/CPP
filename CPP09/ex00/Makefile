@@ -1,10 +1,14 @@
 .SILENT:
 
 NAME	:= btc
-INCLUDE	:= include/
+CXX	:= c++
+CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
+INCLUDE	:= -Iinclude/
 SRCDIR	:= src/
-SRC		:= $(addprefix $(SRCDIR), )
-OBJ		:= $(SRC:.cpp=.o)
+SRC	:= $(addprefix $(SRCDIR), \
+	BitcoinExchange.cpp \
+	main.cpp)
+OBJ	:= $(SRC:.cpp=.o)
 
 all: $(NAME)
 

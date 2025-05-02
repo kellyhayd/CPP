@@ -2,7 +2,7 @@
 
 NAME = span
 
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 INCLUDE := -Iinclude/

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <string>
+#include <iomanip>
 
 static void	fillData(std::map<t_date, float>& data) {
 	std::ifstream	file("data.csv");
@@ -56,14 +57,15 @@ std::map<t_date, float>	BitcoinExchange::getData() const { return (this->_data);
 void	BitcoinExchange::processInput(std::ifstream& file) {
 	std::string	line;
 	std::getline(file, line);
-	std::getline(file, line);
-	std::string	date = line.substr(0, line.find('|'));
-	if (!validateDate(date)) {
-		std::cerr << RED("Error: bad input => ") << line << std::endl;
+	while (std::getline(file, line)) {
+		std::string	date = line.substr(0, line.find('|'));
+		if (!validateDate(date)) {
+			std::cerr << RED("Error: bad input => ") << line << std::endl;
+		}
+		std::string value = line.substr(line.find('|') + 1);
+		if (validateValue(value, line))
+			printOutput(date, value);
 	}
-	std::string value = line.substr(line.find('|') + 1);
-	if (validateValue(value, line))
-		printOutput(date, value);
 }
 
 bool	BitcoinExchange::validateDate(std::string& date) {
@@ -119,11 +121,12 @@ void	BitcoinExchange::printOutput(std::string& date, std::string& value) {
 	float rate = findMatch();
 	float result = rate * _value;
 
-	std::cout << YELLOW(date) << " => " << YELLOW(value) << " = " << CYAN(result);
+	std::cout << std::fixed << std::setprecision(2);
+	std::cout << YELLOW(date) << " => " << YELLOW(value) << " = " << CYAN(result) << std::endl;
 }
 
 float	BitcoinExchange::findMatch() {
-	int	closestRate = 0;
+	float	closestRate = 0;
 	for (std::map<t_date, float>::iterator it = _data.begin(); it != _data.end(); it++) {
 		if (it->first.year == _year && it->first.month == _month && it->first.day == _day) {
 			return (it->second);

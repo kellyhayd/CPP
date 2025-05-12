@@ -19,13 +19,13 @@ Span::~Span() {};
 
 void	Span::addNumber(int value) {
 	if (_content.size() >= _maxSize)
-		throw std::overflow_error("There is no empty space anymore");
+		throw std::overflow_error("There is not available space");
 	_content.push_back(value);
 };
 
 int	Span::shortestSpan() {
 	if (_content.size() < 2)
-		throw std::logic_error("There is no numbers enough to have a span");
+		throw std::logic_error("There are not enough numbers to have a span");
 	int minSpan = std::numeric_limits<int>::max();
 	for (size_t i = 1; i < _content.size(); i++) {
 		int	span = _content[i] - _content[i - 1];
@@ -38,7 +38,7 @@ int	Span::shortestSpan() {
 
 int	Span::longestSpan() {
 		if (_content.size() < 2)
-		throw std::logic_error("There is no numbers enough to have a span");
+		throw std::logic_error("There are not enough numbers to have a span");
 	int maxSpan = std::numeric_limits<int>::min();
 	for (size_t i = 1; i < _content.size(); i++) {
 		int	span = _content[i] - _content[i - 1];

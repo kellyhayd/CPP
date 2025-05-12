@@ -19,7 +19,7 @@ int main() {
 	std::cout << INVERSE << "   SUBJECT TEST   " << RESET << std::endl;
 	MutantStack<int>	mstack;
 	mstack.push(5);
-	mstack.push(17); // {17, 5}
+	mstack.push(17); // {5, 17}
 	std::cout << BOLD << "top: " << YELLOW << mstack.top() << RESET << std::endl; // 17
 
 	mstack.pop(); // {5}
@@ -29,6 +29,7 @@ int main() {
 	mstack.push(5);
 	mstack.push(737);
 	mstack.push(0); // {5, 3, 5, 737, 0}
+
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
@@ -65,7 +66,6 @@ int main() {
 	printStack(stackCopy, "copy");
 	printStack(stackOperator, "assignment operator");
 	std::cout << std::endl;
-
 
 	return (0);
 }

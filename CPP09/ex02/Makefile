@@ -1,12 +1,12 @@
 .SILENT:
 
-NAME	:= RPN
+NAME	:= PmergeMe
 CXX	:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 INCLUDE	:= -Iinc/
 SRCDIR	:= src/
 SRC	:= $(addprefix $(SRCDIR), \
-	RPN.cpp \
+	PmergeMe.cpp \
 	main.cpp)
 BUILD	:= build/
 OBJ	:= 	$(SRC:$(SRCDIR)%.cpp=$(BUILD)%.o)

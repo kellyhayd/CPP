@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include 	<ctime>
 
 std::vector<int> PmergeMe::_jacobsthalNumbers;
 
@@ -62,17 +63,26 @@ void	PmergeMe::printResults() {
 	printContainer(_vector);
 
 	PmergeMe::generateJacobsthalNumbers(static_cast<int>(_vector.size() / 2.0) + 2);
+
+	std::clock_t startVectorTime = std::clock();
 	sortVector(_vector);
+    std::clock_t endVectorTime = std::clock();
+
+    std::clock_t startListTime = std::clock();
 	sortList(_list);
+    std::clock_t endListTime = std::clock();
 
 	std::cout << "After: ";
 	printContainer(_vector);
 	printContainer(_list);
 
+	double vectorDuration = static_cast<double>(endVectorTime - startVectorTime) / CLOCKS_PER_SEC * 1000.0;
+    double listDuration = static_cast<double>(endListTime - startListTime) / CLOCKS_PER_SEC * 1000.0;
+
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " \
-		/*tempo do vetor*/ << std::endl;
+		<< vectorDuration << std::endl;
 	std::cout << "Time to process a range of " << _list.size() << " elements with std::list: " \
-		/*tempo da lista*/ << std::endl;
+		<< listDuration << std::endl;
 }
 
 

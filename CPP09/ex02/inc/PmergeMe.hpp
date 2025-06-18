@@ -9,7 +9,7 @@ class PmergeMe {
 private:
 	std::vector<int>	_vector;
 	std::list<int>		_list;
-	std::vector<int>	_jacobsthalNumbers;
+	static std::vector<int>	_jacobsthalNumbers;
 
 public:
 	PmergeMe();
@@ -17,17 +17,19 @@ public:
 	PmergeMe& operator=(const PmergeMe& other);
 	~PmergeMe();
 
-	std::vector<int>	jacobsthalNumbers(int maxElements);
+	static void	generateJacobsthalNumbers(int maxElements);
 	void	addNumber(int number);
 	void	printResults();
-	void	sortVector(std::vector<int>& _vector);
-	void	sortList();
-	void	insertSorted(std::vector<int>& pend, std::vector<int>& main);
+	void	sortVector(std::vector<int>& vec);
+	void	sortList(std::list<int>& lst);
+	void	insertSortedVector(std::vector<int>& pend, std::vector<int>& main);
+	void	insertSortedList(std::list<int>& pend, std::list<int>& main);
+	std::list<int>::iterator	advanceListIterator(std::list<int>::iterator it, size_t n) const;
+
 
 	std::vector<int>	getVector() const;
 	std::list<int>		getList() const;
 	int	getJacobsthal(int n) const;
-	void	setJacobsthal(int maxElements);
 
 	template <typename T>
 	void	printContainer(const T& container) const {

@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 #include <cerrno>
-#include <cmath>
 
 void	startSorting(int argc, char** argv) {
 	PmergeMe	pmerge;
@@ -17,7 +16,6 @@ void	startSorting(int argc, char** argv) {
 		}
 		pmerge.addNumber(num);
 	}
-	pmerge.setJacobsthal((argc - 1) / 2);
 	pmerge.printResults();
 }
 

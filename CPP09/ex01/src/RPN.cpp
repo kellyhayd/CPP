@@ -66,16 +66,20 @@ void	RPN::polishExpression(std::string expression) {
 		if (token.size() == 1 && isdigit(token[0])) {
 			_stack.push(token[0] - '0');
 		} else if (token.size() == 1 && (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/')) {
+			if (_stack.size() < 2) {
+				std::cerr << "Error: Invalid expression" << std::endl;
+				return;
+			}
 			calculate(token[0]);
 		} else {
 			std::cerr << "Error: Invalid token '" << token << "' in expression." << std::endl;
 			return;
 		}
 	}
-	if (!_stack.empty()) {
+	if (_stack.size() == 1) {
 		std::cout << "Result: " << _stack.top() << std::endl;
 		_stack.pop();
 	} else {
-		std::cerr << "Error: No result to display." << std::endl;
+		std::cerr << "Error: Invalid expression" << std::endl;
 	}
 }
